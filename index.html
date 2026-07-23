@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover New York City | The Elegant Travel Guide</title>
+    <!-- Google Fonts for Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #111111;
+            --accent-gold: #c5a059;
+            --bg-light: #faf9f6;
+            --text-dark: #2c2c2c;
+            --text-muted: #666666;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 5%;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Section - Pure CSS Background (No 404 Ever) */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #415a77 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.6) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 4rem;
+            font-weight: 500;
+            letter-spacing: 6px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            color: #e0e0e0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            border: 1px solid var(--accent-gold);
+            color: #ffffff;
+            background-color: rgba(197, 160, 89, 0.15);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-gold);
+            color: #ffffff;
+        }
+
+        /* Section Layouts */
+        section {
+            padding: 6rem 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+        }
+
+        /* Landmark Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        /* Landmark SVG Vector Illustrations */
+        .card-visual {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+        }
+
+        .statue-bg {
+            background: linear-gradient(135deg, #1d2d44, #3d5a80);
+        }
+
+        .park-bg {
+            background: linear-gradient(135deg, #2d6a4f, #52b788);
+        }
+
+        .empire-bg {
+            background: linear-gradient(135deg, #3d3a45, #6c5ce7);
+        }
+
+        .card-visual svg {
+            width: 80px;
+            height: 80px;
+            fill: rgba(255, 255, 255, 0.9);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-content h3 {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .card-content .tag {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: block;
+        }
+
+        .card-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            font-size: 0.85rem;
+            color: #888888;
+            letter-spacing: 1px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            nav { display: none; }
+            section { padding: 4rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">NYC Guide</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#landmarks">Landmarks</a>
+            <a href="#tips">Travel Tips</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>New York City</h1>
+            <p>Experience the timeless elegance, culture, and energy of the world's finest metropolis.</p>
+            <a href="#landmarks" class="btn">Explore Iconic Places</a>
+        </div>
+    </div>
+
+    <!-- Intro Section -->
+    <section id="about">
+        <div class="section-title">
+            <p>Welcome to New York</p>
+            <h2>The City of Dreams</h2>
+        </div>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-muted); font-size: 1.05rem;">
+            From majestic skyscrapers soaring into the clouds to peaceful urban sanctuaries, New York City offers a captivating blend of history, culture, and modern sophistication. Step into a world where every corner tells a story.
+        </p>
+    </section>
+
+    <!-- Landmarks Section -->
+    <section id="landmarks" style="background-color: #f2f0eb;">
+        <div class="section-title">
+            <p>Must-Visit Destinations</p>
+            <h2>Iconic Landmarks</h2>
+        </div>
+
+        <div class="grid">
+            <!-- Card 1: Statue of Liberty -->
+            <div class="card">
+                <div class="card-visual statue-bg">
+                    <!-- Torch/Statue Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L9.5 7.5L3 8.5L7.5 13L6.5 19.5L12 16.5L17.5 19.5L16.5 13L21 8.5L14.5 7.5L12 2Z"/></svg>
+                </div>
+                <div class="card-content">
+                    <span class="tag">Symbol of Freedom</span>
+                    <h3>Statue of Liberty</h3>
+                    <p>A global beacon of hope and freedom. Take a scenic ferry across the harbor to view this world-renowned monument up close.</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Central Park -->
+            <div class="card">
+                <div class="card-visual park-bg">
+                    <!-- Tree/Park Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2L5 13H9V21H15V13H19L12 2Z"/></svg>
+                </div>
+                <div class="card-content">
+                    <span class="tag">Urban Oasis</span>
+                    <h3>Central Park</h3>
+                    <p>An expansive green retreat in the heart of Manhattan. Enjoy serene strolls, charming bridges, and world-class artistic design.</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Empire State Building -->
+            <div class="card">
+                <div class="card-visual empire-bg">
+                    <!-- Skyscraper Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 2H5C3.9 2 3 2.9 3 4V22H21V4C21 2.9 20.1 2 19 2ZM11 20H7V16H11V20ZM11 14H7V10H11V14ZM11 8H7V4H11V8ZM17 20H13V16H17V20ZM17 14H13V10H17V14ZM17 8H13V4H17V8Z"/></svg>
+                </div>
+                <div class="card-content">
+                    <span class="tag">Architectural Marvel</span>
+                    <h3>Empire State Building</h3>
+                    <p>Soar above the city streets for breathtaking 360-degree views from the observatory of this celebrated Art Deco skyscraper.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Tips Section -->
+    <section id="tips">
+        <div class="section-title">
+            <p>Essential Information</p>
+            <h2>Travel Elegantly</h2>
+        </div>
+
+        <div class="grid">
+            <div style="text-align: center; padding: 1rem;">
+                <h3 style="font-family: var(--font-heading); margin-bottom: 0.5rem; color: var(--accent-gold);">Best Time to Visit</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Spring and Autumn offer mild weather and vibrant natural scenery throughout the city parks.</p>
+            </div>
+            <div style="text-align: center; padding: 1rem;">
+                <h3 style="font-family: var(--font-heading); margin-bottom: 0.5rem; color: var(--accent-gold);">Getting Around</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Experience the iconic Yellow Cabs or navigate seamlessly using the historic NYC Subway system.</p>
+            </div>
+            <div style="text-align: center; padding: 1rem;">
+                <h3 style="font-family: var(--font-heading); margin-bottom: 0.5rem; color: var(--accent-gold);">Cultural Etiquette</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem;">Tipping 18% to 20% at restaurants and taxis is customary practice across the city.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 NYC Travel Guide. Crafted for global travelers.</p>
+    </footer>
+
+</body>
+</html>
